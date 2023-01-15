@@ -7,21 +7,26 @@ import {Outlet} from 'react-router-dom'
 
 export function MainLayout(){
 
-    const [menu, setMenu] = useState([
-        {
-            text: 'Главная',
-            link: '/'
-          }, 
-        {
-            text: 'Корзина',
-            link: '/basket'
-        }
-    ])
+    const [menu, setMenu] = useState({
+        links: [
+            {
+                text: 'Главная',
+                link: '/'
+            }
+        ],
+        buttons: [
+            {
+                icon: 'https://img.icons8.com/fluency/512/full-recycle-bin.png',
+                text: 'Корзина',
+                link: '/basket'
+            }
+        ]
+    })
 
     return(
         <div>
             <header>
-                <Menu />
+                <Menu menu={menu}/>
             </header>
             <main>
                 <Outlet />

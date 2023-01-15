@@ -3,6 +3,7 @@ import {
 } from 'react-router-dom'
 
 import {MainLayout} from '../../components/main-layout'
+import {GoodList} from '../../components/good-list'
 import {Main} from '../../pages/main'
 
 /**
@@ -17,6 +18,12 @@ import {Main} from '../../pages/main'
                 {
                     path: '/',
                     element: <Main />,
+                    children: [
+                        {
+                            index: true,
+                            element: <GoodList />
+                        },
+                    ]
                 }
             ]
         }
