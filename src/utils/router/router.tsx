@@ -5,6 +5,7 @@ import {
 import {MainLayout} from '../../components/main-layout'
 import {GoodList} from '../../components/good-list'
 import {Main} from '../../pages/main'
+import {Basket} from '../../pages/basket'
 
 /**
  * Router - утилс который опредяет маршруты приложения
@@ -24,6 +25,10 @@ import {Main} from '../../pages/main'
                             element: <GoodList />
                         },
                     ]
+                },
+                {
+                    path: '/basket',
+                    element: <Basket />
                 }
             ]
         }

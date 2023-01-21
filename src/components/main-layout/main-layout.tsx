@@ -12,6 +12,14 @@ export function MainLayout(){
             {
                 text: 'Главная',
                 link: '/'
+            },
+            {
+                text: 'О нас',
+                link: '/'
+            },
+            {
+                text: 'Контакты',
+                link: '/'
             }
         ],
         buttons: [
@@ -19,6 +27,16 @@ export function MainLayout(){
                 icon: 'https://img.icons8.com/fluency/512/full-recycle-bin.png',
                 text: 'Корзина',
                 link: '/basket'
+            },
+            {
+                icon: 'https://img.icons8.com/fluency/512/full-recycle-bin.png',
+                text: 'Авторизаия',
+                link: '/auth'
+            },
+            {
+                icon: 'https://img.icons8.com/fluency/512/full-recycle-bin.png',
+                text: 'Регистрация',
+                link: '/reg'
             }
         ]
     })
