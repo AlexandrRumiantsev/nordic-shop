@@ -1,7 +1,15 @@
 import React from 'react'
 
-export function GoodItem(){
+/**
+ * ДЗ Создать интерфейс для GoodItem (убрать any)
+ */
+export function GoodItem({data}: any){
     return (
-        <>GoodItem</>
+        <>
+            <img src={data.IMG} />
+            {data.TITLE}
+            {data.DISCR}
+            
+        </>
     )
 }

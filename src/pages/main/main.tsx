@@ -1,12 +1,12 @@
-import React from 'react'
 import {Outlet} from 'react-router-dom'
+import {HelloBlock, SearchInput} from './components'
 
-export function Main(){
+export function Main() : JSX.Element {
     return (
         <>
-        Main
-        <Outlet />
+            <HelloBlock />
+            <SearchInput />
+            <Outlet />
         </>
-        
     )
 }
