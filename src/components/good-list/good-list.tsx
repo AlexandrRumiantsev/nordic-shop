@@ -1,32 +1,52 @@
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import React, {useEffect, useState, ReactNode} from 'react'
 
 import { StyledListLi, StyledListUl } from './style'
 import { iGood, iGoods } from './types'
 import { GoodItem } from '../good-item'
 
 import goodJSON from '../../stub/goods.json'
-
+import { goodsActions } from '../../store/slices/good';
+import {useAppDispatch } from '../../store'
 /**
  * ДЗ
  * Применить тип для as, заменить any
  */
 
+   
+  
+  export interface IRootState {
+    //state: {
+        goods: {
+            list: iGood
+         };
+   // }
+    
+  } 
+
 export function GoodList() : JSX.Element{
 
     //Запрос к редаксу
+    //const goods: iGoods = goodJSON
+    const dispatch = useAppDispatch()
+    const goods = useSelector<IRootState, iGood>(state => state.goods.list) as iGoods
     
+    useEffect( ()  => {
+        dispatch(goodsActions.getAll())
+    }, [])
+
     return (
         <StyledListUl>
             {
-                goodJSON.map((good: iGood, index: number) => 
+                goods.map((good: iGood, index: number) => 
                     (
                         <StyledListLi key={good.TITLE + index}>
-                            <Link to={`/goods/${good.ID}`}>
+                            
                                 <GoodItem data={good}/>
-                            </Link>
+   
                         </StyledListLi>
                     )
-                ) as any
+                ) as ReactNode
             }
         </StyledListUl>
     )

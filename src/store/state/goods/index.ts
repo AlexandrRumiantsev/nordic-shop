@@ -5,4 +5,11 @@ export type iGood = {
     PRICE?: string,
     IMG?: string,
     COUNT?: string,
-}
+  }
+
+export function createInitialState() {
+    return {
+        list: [] as iGood[],
+        basket: [] as iGood[]
+    }
+  }
