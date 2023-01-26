@@ -28,6 +28,7 @@ import {Basket} from '../../pages/basket'
                         },
                         {
                             path: '/goods/:id',
+                            //Почему этот компонент не подходит?
                             element: <GoodItem />
                         },
                     ]
