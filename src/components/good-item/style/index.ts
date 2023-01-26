@@ -1,0 +1,1 @@
+export {StyledDiscription} from './discription.style'

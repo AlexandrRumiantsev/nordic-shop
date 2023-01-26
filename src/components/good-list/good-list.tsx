@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 
 import { StyledListLi, StyledListUl } from './style'
 import { iGood, iGoods } from './types'
@@ -21,9 +20,7 @@ export function GoodList() : JSX.Element{
                 goodJSON.map((good: iGood, index: number) => 
                     (
                         <StyledListLi key={good.TITLE + index}>
-                            <Link to={`/goods/${good.ID}`}>
-                                <GoodItem data={good}/>
-                            </Link>
+                            <GoodItem data={good}/>
                         </StyledListLi>
                     )
                 ) as any
