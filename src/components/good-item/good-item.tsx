@@ -1,23 +1,18 @@
-import { Link } from 'react-router-dom'
-
-import { StyledDiscription } from './style'
+import { StyledDiscription, StyledImg, StyledTitle } from './style'
 
 /**
  * ДЗ Создать интерфейс для GoodItem (убрать any)
  */
 export function GoodItem({data}: any){
     return (
-        <>
-            <img src={data.IMG} />
-            <Link to={`/goods/${data.ID}`}>
+        <> 
+            <StyledImg src={data.IMG} />
+            <StyledTitle>
                 {data.TITLE}
-            </Link>
+            </StyledTitle>
             <StyledDiscription>
                 {data.DISCR}
             </StyledDiscription>
-            <button>
-                Добавить в корзину
-            </button>
         </>
     )
 }

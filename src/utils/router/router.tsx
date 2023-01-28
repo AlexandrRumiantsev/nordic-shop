@@ -8,6 +8,8 @@ import {GoodItem} from '../../components/good-item'
 
 import {Main} from '../../pages/main'
 import {Basket} from '../../pages/basket'
+import {Detail} from '../../pages/detail'
+
 
 /**
  * Router - утилс который опредяет маршруты приложения
@@ -28,8 +30,7 @@ import {Basket} from '../../pages/basket'
                         },
                         {
                             path: '/goods/:id',
-                            //Почему этот компонент не подходит?
-                            element: <GoodItem />
+                            element: <Detail />
                         },
                     ]
                 },
