@@ -16,5 +16,9 @@ export const slice = createSlice({
            console.log('Сработал addCase ADD_TO_BASKET extraReducers')
            state.basket.push(action.payload) 
         })
+        .addCase('GET_ALL_GOOD', (state, action: iPayload) => {
+          console.log('Сработал addCase GET_ALL_GOOD extraReducers')
+          state.list = action.payload
+        })
       },
 });

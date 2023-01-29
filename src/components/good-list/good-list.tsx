@@ -1,12 +1,23 @@
 
+import { useEffect } from 'react'
 import { StyledListLi, StyledListUl } from './style'
 import { Link } from 'react-router-dom'
 
+import { useSelector } from 'react-redux'
+
 import { iGood, iGoods } from './types'
 import { GoodItem } from '../good-item'
+import { createExtraActions } from '../../store/actions/goods'
+import { useAppDispatch } from '../../store'
 
-import goodJSON from '../../stub/goods.json'
 
+export interface IReduxGoodsState {
+    goods: {
+        basket: iGoods,
+        list: iGoods
+    };
+ }
+ 
 /**
  * ДЗ
  * Применить тип для as, заменить any
@@ -14,12 +25,24 @@ import goodJSON from '../../stub/goods.json'
 
 export function GoodList() : JSX.Element{
 
-    //Запрос к редаксу
-    
+    const dispatch = useAppDispatch()
+    // Декомпозировать из функции экшн для получения товаров
+    const { getAllGoods } = createExtraActions()
+
+    // Вызвать getAllGoods один раз при загрузке компонента
+    useEffect(()=> {
+        dispatch(
+            getAllGoods()
+        )
+    }, [])
+
+    // Заставить редакс получить данные
+    //`Запрос к данным из редакса
+    const goods: any = useSelector<IReduxGoodsState>(state => state.goods.list) 
     return (
         <StyledListUl>
             {
-                goodJSON.map((good: iGood, index: number) => 
+                goods.map((good: iGood, index: number) => 
                     (
                         <StyledListLi key={good.TITLE + index}>
                             <Link to={`/goods/${good.ID}`}>
