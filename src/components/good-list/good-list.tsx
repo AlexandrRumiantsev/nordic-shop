@@ -1,7 +1,6 @@
 
 import { useEffect } from 'react'
 import { StyledListLi, StyledListUl } from './style'
-import { Link } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
 
@@ -45,9 +44,7 @@ export function GoodList() : JSX.Element{
                 goods.map((good: iGood, index: number) => 
                     (
                         <StyledListLi key={good.TITLE + index}>
-                            <Link to={`/goods/${good.ID}`}>
-                                <GoodItem data={good}/>
-                            </Link>
+                            <GoodItem {...good}/>
                         </StyledListLi>
                     )
                 ) as any

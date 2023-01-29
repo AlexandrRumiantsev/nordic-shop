@@ -1,11 +1,17 @@
-import {Outlet} from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
+
 import {HelloBlock, SearchInput} from './components'
 
 export function Main() : JSX.Element {
+    const { pathname } = useLocation()
     return (
         <>
-            <HelloBlock />
-            <SearchInput />
+            {pathname === '/' && (
+                <>
+                    <HelloBlock />
+                    <SearchInput />
+                </>
+            )}
             <Outlet />
         </>
     )

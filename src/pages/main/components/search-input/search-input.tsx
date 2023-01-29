@@ -1,8 +1,9 @@
+import { StyledSearchInput } from './style'
+
 export function SearchInput() : JSX.Element {
     return (
-        <>
-            Поиск
-            <input type='text' />
-        </>
+        <StyledSearchInput>
+            <input placeholder='Поиск' type='text' />
+        </StyledSearchInput>
     )
 }
