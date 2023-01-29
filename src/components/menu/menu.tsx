@@ -1,9 +1,20 @@
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import { StyledMenu, StyledList } from './style'
 import { iMenu, buttonsAndLinks } from './types'
+import { iGoods } from '../good-list/types';
 
+export interface IReduxGoodsState {
+    goods: {
+        basket: iGoods
+    };
+ }
+ 
 export function Menu( { menu: { buttons, links } } : iMenu ) : JSX.Element {
+
+    //ДЗ Типизировать basket
+    const basket: any = useSelector<IReduxGoodsState>(state => state.goods.basket) 
 
     return (
         <StyledMenu>
@@ -24,6 +35,7 @@ export function Menu( { menu: { buttons, links } } : iMenu ) : JSX.Element {
                         <li key={button.text+index}>
                             <Link to={button.link}>
                                 {button.text}
+                                {button.text === 'Корзина' && ` (${basket.length})`}
                             </Link>
                         </li>
                     )

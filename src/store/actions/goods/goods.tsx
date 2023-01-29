@@ -7,9 +7,10 @@ export function createExtraActions() {
 
     //Метод для добавления товаров в корзину
     function addToBasket(good: any) {
+      console.log('Сработал action addToBasket')
       return {
         type: 'ADD_TO_BASKET',
-        payload: { good },
+        payload: { ...good},
       };
     }
 
