@@ -5,17 +5,12 @@ import { iGoods, iGood } from '../../components/good-list/types';
 
 import { StyledBasket } from './style';
 
-export interface IReduxGoodsState {
-    goods: {
-        basket: iGoods
-    };
- }
- 
+import { IReduxGoodsState, } from '../../types/i-redux-goods-state'
 
 export function Basket(){
 
     //ДЗ Типизировать basket
-    const basket: any = useSelector<IReduxGoodsState>(state => state.goods.basket) 
+    const basket: iGoods = useSelector<IReduxGoodsState, iGoods>(state => state.goods.basket) 
 
     return (
         <StyledBasket>

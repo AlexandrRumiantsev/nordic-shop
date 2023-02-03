@@ -1,20 +1,15 @@
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 import { StyledMenu, StyledList } from './style'
 import { iMenu, buttonsAndLinks } from './types'
 import { iGoods } from '../good-list/types';
 
-export interface IReduxGoodsState {
-    goods: {
-        basket: iGoods
-    };
- }
- 
+import { useSelectorTyped } from '../../generics/use-selector-typed';
+
 export function Menu( { menu: { buttons, links } } : iMenu ) : JSX.Element {
 
     //ДЗ Типизировать basket
-    const basket: any = useSelector<IReduxGoodsState>(state => state.goods.basket) 
+    const basket: any = useSelectorTyped(state => state.goods.basket) 
 
     return (
         <StyledMenu>

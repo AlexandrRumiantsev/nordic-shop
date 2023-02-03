@@ -2,21 +2,16 @@
 import { useEffect } from 'react'
 import { StyledListLi, StyledListUl } from './style'
 
-import { useSelector } from 'react-redux'
-
-import { iGood, iGoods } from './types'
+import { iGood } from './types'
 import { GoodItem } from '../good-item'
 import { createExtraActions } from '../../store/actions/goods'
 import { useAppDispatch } from '../../store'
 
+import { useSelectorTyped } from '../../generics/use-selector-typed'
+import { IReduxGoodsState, iGoods } from './types'
 
-export interface IReduxGoodsState {
-    goods: {
-        basket: iGoods,
-        list: iGoods
-    };
- }
- 
+
+
 /**
  * ДЗ
  * Применить тип для as, заменить any
@@ -35,9 +30,11 @@ export function GoodList() : JSX.Element{
         )
     }, [])
 
+    
     // Заставить редакс получить данные
     //`Запрос к данным из редакса
-    const goods: any = useSelector<IReduxGoodsState>(state => state.goods.list) 
+    const goods: iGoods = useSelectorTyped<IReduxGoodsState, iGoods>(state => state.goods.list)
+
     return (
         <StyledListUl>
             {
