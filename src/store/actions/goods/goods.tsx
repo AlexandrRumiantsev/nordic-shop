@@ -6,6 +6,8 @@ export function createExtraActions() {
     return {
         addToBasket,
         getAllGoods,
+        delFromBasket,
+        changeCountGoodInBasket,
     };    
 
     //Метод для добавления товаров в корзину
@@ -14,6 +16,27 @@ export function createExtraActions() {
         type: 'ADD_TO_BASKET',
         payload: {...good},
       };
+    }
+
+    //Метод для удаления товара из корзины
+    function delFromBasket(good: any){
+        //Внутри действия преобразим массив с элементами в корзине
+        return {
+           type: 'DEL_FROM_BASKET',
+           payload: good
+        }
+    }
+
+    //Метод дл изменения количества товаров в корзине
+    function changeCountGoodInBasket(operation: string, good: any){
+        //Передаем товар и операция, для изменения счетчика в корзине
+        return {
+            type: "CHANGE_COUNT_GOOD_IN_BASKET",
+            payload: {
+              operation,
+              good,
+            }   
+        }
     }
 
     //Метод для ПЕРВОНАЧАЛЬНОЙ загрузки товаров с сервера
