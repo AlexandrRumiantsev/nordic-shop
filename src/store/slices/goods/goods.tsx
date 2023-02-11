@@ -5,6 +5,14 @@ import { iGood } from '../../../components/good-list/types'
 import { iPayload } from '../types' 
 import { createInitialState } from '../../state/goods'
 import { createExtraReducers } from '../../reducers/goods/goods'
+import { createExtraActions } from '../../actions/goods'
+
+const extraActions: {
+  getAllGoods: any, 
+  addToBasket: any, 
+  changeCountGoodInBasket: any,
+  delFromBasket: any,
+} = createExtraActions()
 
 const name = 'goods';
 
@@ -76,9 +84,16 @@ export const slice = createSlice({
            
 
         })
+        /*
+        Старый вариант получения всех товаров
         .addCase('GET_ALL_GOOD', (state, action: iPayload) => {
           console.log('Сработал addCase GET_ALL_GOOD extraReducers')
           state.list = action.payload
         })
+        */
+       .addCase(extraActions.getAllGoods.pending, (state, action: iPayload) => {
+          console.log('action', action)
+       })
+
       },
 });
