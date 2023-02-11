@@ -1,12 +1,11 @@
 // Метод createExtraActions отвечает за создание действий, оторые будут происходить с товарами и возвращать их
-import goodsJSON from '../../../stub/goods.json'
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export function createExtraActions() {
 
     return {
         addToBasket,
-        getAllGoods,
+        getAllGoods: getAllGoods(),
         delFromBasket,
         changeCountGoodInBasket,
     };    
@@ -70,10 +69,12 @@ export function createExtraActions() {
 
       function getAllGoods() {
         return createAsyncThunk<any>(
-          'http://localhost:3001/goods/get',
+          'getAllGoods',
             //response ответ от сервера
-            async (response: any) => {
-                return response.json()
+            async (data: any) => {
+                const response = await fetch(`http://localhost:3001/goods/get`).then( (response) => response.json())
+                console.log(response)
+                return response
             }
         );
       }   
